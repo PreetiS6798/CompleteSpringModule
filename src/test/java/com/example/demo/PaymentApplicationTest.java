@@ -68,14 +68,5 @@ public class PaymentApplicationTest {
 		}
 	}
 	
-//	@Test
-//	void selectPaymentBasedOnPaymentId()
-//	{
-//		List<Payment> paymentList = payRepo.selectPaymentBasedOnPaymentId(86);
-//		
-//		
-//	}
-//	
-	
 	
 }

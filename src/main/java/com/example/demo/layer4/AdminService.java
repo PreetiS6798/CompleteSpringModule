@@ -7,5 +7,6 @@ import com.example.demo.layer2.Claim;
 public interface AdminService {
 
 	List<Claim> selectAllClaimService();
+	void updateClaimService(Claim claim);
 
 }

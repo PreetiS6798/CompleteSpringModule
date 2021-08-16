@@ -34,5 +34,19 @@ public class AdminRepositoryImpl extends BaseRepository implements AdminReposito
 		return admList;
 	}
 
+@Transactional
+public void updateStatus(Claim claim)
+{
+	EntityManager entityManager = getEntityManager();
+	System.out.println("debug updateStatus");
+	Query query = entityManager.createQuery("Update Claim  set CLAIM_APPROVALSTATUS=:aps where CLAIM_ID=:cid");
+	query.setParameter("aps",-1);
+	query.setParameter("cid",claim.getClaimId());
+	
+	query.executeUpdate();
+	System.out.println("UPDATED");
+	
+}
+
 
 }

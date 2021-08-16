@@ -30,4 +30,9 @@ public class AdminServiceImpl implements AdminService {
 		return admRepo.selectAllClaims();
 	}
 
+public void updateClaimService(Claim claim) {
+	admRepo.updateStatus(claim);
+	
+}
+
 }
