@@ -29,15 +29,6 @@ public class PaymentServiceImpl implements PaymentService {
 		// TODO Auto-generated method stub
 		 return payRepo.insertPayment(pay);
 	}
-
-	
-	
-//	public Payment insertPaymentService(Payment payment) {
-//		
-//		Payment paymentObj =null;
-//		paymentObj=payRepo.insertPayment(payment);
-//		
-//		return paymentObj;
 	
 
 }

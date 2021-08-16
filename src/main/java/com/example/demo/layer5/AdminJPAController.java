@@ -12,36 +12,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.layer2.Payment;
-import com.example.demo.layer3.PaymentRepositoryImpl;
-import com.example.demo.layer4.PaymentServiceImpl;
+import com.example.demo.layer2.Claim;
+import com.example.demo.layer2.Insurance;
+import com.example.demo.layer4.AdminServiceImpl;
+import com.example.demo.layer4.ClaimServiceImpl;
+import com.example.demo.layer4.InsuranceServiceImpl;
 
-@CrossOrigin
+@CrossOrigin(origins="*")
 @RestController
-@RequestMapping("/payment")
-
-public class PaymentJPAController {
+@RequestMapping("/admin")
+public class AdminJPAController {
 	
-	@Autowired
-	private PaymentServiceImpl service;
-	
-
-	
-	@GetMapping
-	@ResponseBody
-	@RequestMapping(value="/getPayment/{insuranceId}")
-	public List<Payment> getPaymentByInsuranceId(@PathVariable int insuranceId)
-	{
-		return service.selectPaymentByInsuranceIdService(insuranceId);
+	public AdminJPAController() {
+		System.out.println("In Layer 5");
 	}
 
+	
+	@Autowired
+	AdminServiceImpl admService;
 
-@PostMapping
-@ResponseBody
-@RequestMapping(value = "/addPayment")
-public Payment addPayment(@RequestBody Payment payment) {
- return service.insertPaymentService(payment);
 
- }
+	@GetMapping
+	@ResponseBody
+	@RequestMapping(value="/getAllClaim")
+	public List<Claim> getAllClaims(){
+		System.out.println("in getAllClaims() ... method");
+		return admService.selectAllClaimService();
+	}
+
 }
-

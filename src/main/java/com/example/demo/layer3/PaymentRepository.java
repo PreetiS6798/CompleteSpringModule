@@ -14,12 +14,9 @@ public interface PaymentRepository {
 	
 	
 	List<Payment> selectPaymentByInsuranceId(int paymentId);
-	/*
-	 * List<Payment> insertPaymentByPaymentAmount(int paymentAmount);
-	 */
-	/* List<Payment> insertPaymentByInsuranceID(int InsuranceID); */
 	
 	Payment insertPayment(Payment pay);
 	List<Payment> getAllPayment();
+	
 	
 }

@@ -31,10 +31,8 @@ public class PaymentApplicationTest {
 	
 	@Test
 	public void deletePaymentTest() {
-		
-        Payment pay = new Payment();
-        pay.setPaymentId(87);
-        payRepo.deletePayment(pay);
+        
+        payRepo.deletePayment(87);
 	}
 	
 	@Test
@@ -53,16 +51,31 @@ public class PaymentApplicationTest {
 		System.out.println("Fetching payment...");
 		
 		List<Payment> paymentList=payRepo.selectPaymentBasedOnAmountInRange(1000,2500);
-		System.out.println(paymentList);
+		for (Payment payment : paymentList) {
+			System.out.println("PaymentId : "+payment.getPaymentId());
+			System.out.println("PaymentAmount : "+payment.getPaymentAmount());
+		}
 	}
 	
 	@Test
-	void loadAllStudentsTest() {
+	void loadAllPaymentTest() {
 		System.out.println("Loading all the students...");
 		List<Payment> paymentList = payRepo.getAllPayment();
 		System.out.println("paymentList "+paymentList.size());
 		for (Payment payment : paymentList) {
-			System.out.println("Payment : "+payment);
+			System.out.println("PaymentId : "+payment.getPaymentId());
+			System.out.println("PaymentAmount : "+payment.getPaymentAmount());
 		}
 	}
+	
+//	@Test
+//	void selectPaymentBasedOnPaymentId()
+//	{
+//		List<Payment> paymentList = payRepo.selectPaymentBasedOnPaymentId(86);
+//		
+//		
+//	}
+//	
+	
+	
 }

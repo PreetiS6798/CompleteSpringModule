@@ -1,6 +1,5 @@
 package com.example.demo.layer3;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.example.demo.layer2.Payment;
 import java.util.List;
 
@@ -38,18 +37,6 @@ public class PaymentRepositoryImpl extends BaseRepository implements PaymentRepo
 		
 	}
     
-//    @Transactional
-//	public void deletePayment(Payment pay) {
-//		EntityManager entityManager = getEntityManager();
-//		Payment foundPay = entityManager.find(Payment.class,paymentId); //find it 
-//		entityManager.remove(foundPay);
-////		if(foundPay!=null)
-////			entityManager.remove(foundPay); // based on PK
-////		else
-////			throw new EmployeeNotFoundException("Employee Not Found : "+empno);
-//		System.out.println("EntityManager: payment removed.. ");
-		
-//	}
 	
 	@Transactional
 	
@@ -65,9 +52,17 @@ public class PaymentRepositoryImpl extends BaseRepository implements PaymentRepo
 			System.out.println("UPDATED");
 			
 		}
-	public void deletePayment(Payment pay) {
-		// TODO Auto-generated method stub
+	
+	@Transactional
+	public void deletePayment(int paymentId) {
+		EntityManager entityManager = getEntityManager();
+		System.out.println("debug deletePayment");
+		Query query = entityManager.createQuery("Delete from Payment where paymentId =:pid");
+		query.setParameter("pid",paymentId);
 		
+		int rows = query.executeUpdate();
+		System.out.println("Deleted"+rows);
+		System.out.println("------------------------------------");
 	}
 
 	
@@ -98,9 +93,11 @@ public List<Payment> selectPaymentBasedOnAmountInRange(double startAmount, doubl
 	List<Payment> payList = query.getResultList();
 	return payList;
 }
-@Override
+
+@Transactional
 public List<Payment> getAllPayment() {
 	List<Payment> paymentList = entityManager.createQuery(" from Payment").getResultList();
+	
 	return paymentList;
 }
 
